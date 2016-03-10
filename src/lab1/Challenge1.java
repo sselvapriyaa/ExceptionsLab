@@ -18,25 +18,42 @@ import javax.swing.JOptionPane;
 public class Challenge1 {
     private static final int LAST_NAME_IDX = 1;
 
-    public static void main(String[] args) {
+    public static void main(String[] args)throws IllegalArgumentException  {
         Challenge1 app = new Challenge1();
         
         String fullName = JOptionPane.showInputDialog("Enter full name (use Format: first last):");
         String lastName = app.extractLastName(fullName);
         String msg = "Your last name is: " + lastName;
         JOptionPane.showMessageDialog(null, msg);
-    }
-    
+    } 
+
     // write the code to extract the lastName from the fullName
     // Use exception handling to prevent a crash in the event that fullName
     // is null or empty. Throw the exception the calling method. and handle
     // it there.
     public String extractLastName(String fullName) {
-        String lastName = null;
+        //String lastName = null;
         
         // Your code goes here. Assign your value to lastName
-        
-        return lastName;
+        String name = "Gladwin Infant Anand";
+    String lastName = " ";
+    String firstName= " ";
+    if(name.split("\\w+").length>1){
+            
+       lastName = name.substring(name.lastIndexOf(" ")+1);
+       firstName = name.substring(0, name.lastIndexOf(' '));
     }
 
-}
+     else{
+                  
+       firstName = name;
+             }
+    
+            return lastName;
+    }  
+         }
+
+
+
+
+
