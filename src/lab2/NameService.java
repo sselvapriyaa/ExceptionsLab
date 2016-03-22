@@ -19,27 +19,25 @@ public class NameService {
      * fewer than two parts
      */
     public String extractLastName(String fullName)throws IllegalArgumentException {
-        String lastName = "Anand";
-        
+            
         // write your code here to extract the lastName and store in the
         // above local variable
-           String name = "Gladwin Infant Anand";
-   // String lastName = " ";
-    String firstName= " ";
-    if(name.split("\\w+").length>1){
-            
-       lastName = name.substring(name.lastIndexOf(" ")+1);
-       firstName = name.substring(0, name.lastIndexOf(' '));
-    }
+     
+        String lastName = null;
+        String[] parts =null;
+        
+        if(fullName == null || fullName.isEmpty() || fullName.split("").length > 2){
+            throw new IllegalArgumentException("Sorry full name must contain both first name and last name");
+        }
+        parts = fullName.split("");
+        lastName = parts[parts.length-1];
+        return lastName;
+}
+}
 
-     else{
-                  
-       firstName = name;
-             }
-    
-            return lastName;
-    }  
-         }
+        
+       
+         
 
 
     

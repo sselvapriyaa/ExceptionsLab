@@ -22,36 +22,57 @@ public class Challenge1 {
         Challenge1 app = new Challenge1();
         
         String fullName = JOptionPane.showInputDialog("Enter full name (use Format: first last):");
-        String lastName = app.extractLastName(fullName);
-        String msg = "Your last name is: " + lastName;
+        String lastName = null;
+        try{
+          lastName = app.extractLastName(fullName);
+        String msg = "To the best of our knowledge our last name is: " + lastName;
         JOptionPane.showMessageDialog(null, msg);
-    } 
+    } catch(IllegalArgumentException e){
+       JOptionPane.showMessageDialog(null, e.getMessage()); 
+    }
+    
+    }
 
     // write the code to extract the lastName from the fullName
     // Use exception handling to prevent a crash in the event that fullName
     // is null or empty. Throw the exception the calling method. and handle
     // it there.
-    public String extractLastName(String fullName) {
-        //String lastName = null;
+    public String extractLastName(String fullName)throws IllegalArgumentException {
+       //String lastName = null;
         
         // Your code goes here. Assign your value to lastName
-        String name = "Gladwin Infant Anand";
-    String lastName = " ";
-    String firstName= " ";
-    if(name.split("\\w+").length>1){
-            
-       lastName = name.substring(name.lastIndexOf(" ")+1);
-       firstName = name.substring(0, name.lastIndexOf(' '));
-    }
+        String lastName = null;
+        String[] parts =null;
+        
+        if(fullName == null || fullName.isEmpty() || fullName.split("").length > 2){
+            throw new IllegalArgumentException("Sorry full name must contain both first name and last name");
+        }
+        parts = fullName.split("");
+        lastName = parts[parts.length-1];
+        return lastName;
+}
+}
 
-     else{
-                  
-       firstName = name;
-             }
-    
-            return lastName;
-    }  
-         }
+        
+        
+        
+//        String name = "Gladwin Infant Anand";
+//    String lastName = " ";
+//    String firstName= " ";
+//    if(name.split("\\w+").length>1){
+//            
+//       lastName = name.substring(name.lastIndexOf(" ")+1);
+//       firstName = name.substring(0, name.lastIndexOf(' '));
+//    }
+//
+//     else{
+//                  
+//       firstName = name;
+//             }
+//    
+//            return lastName;
+//    }  
+//         }
 
 
 

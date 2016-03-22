@@ -9,7 +9,11 @@ public class Startup {
     public static void main(String[] args) {
 //try{
         Employee emp = new Employee("Jim","Smith","3333333333",28);
-        
+        try{
+            emp.setDaysVacation(-1);
+        }catch(IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
         // Think about this code. It wouldn't work if lastName was null
         String lastName="null";
         String fullNameInCaps = 

@@ -17,7 +17,7 @@ package lab0;
  * @version 1.00
  */
 public class Employee {
-    private static final int MAX_VACATION_DAYS = 28;
+    public static final int MAX_VACATION_DAYS = 28;
     private String firstName;
     private String lastName;
     private String ssn;
@@ -25,8 +25,8 @@ public class Employee {
 
     public Employee() {
         // initialize a bunch of default values
-        firstName = "Selvapriya";
-        lastName = "Anand Amirtharaj";
+        firstName = "Unknown";
+        lastName = "Unknown";
         ssn = "Unknown";
         daysVacation = 0;
     }
@@ -43,20 +43,20 @@ public class Employee {
         return daysVacation;
     }
     
-    // must be atleast 2 digits
-    public final void setDaysVacation(int daysVacation) throws IllegalArgumentException {
-         if( daysVacation > MAX_VACATION_DAYS)
+    // cannot be negative and must be less than max 
+    public void setDaysVacation(int daysVacation) throws IllegalArgumentException {
+         if( daysVacation <0 || daysVacation > MAX_VACATION_DAYS)
                {
             throw new IllegalArgumentException(
-            "Sorry daysVacation must be atleast 2 digits.");
+            "Vacation days cannot be greater than max allowed.");
         }
         this.daysVacation = daysVacation;
     }
 
-    public String getFirstName() {
+    public final String getFirstName() {
         return firstName;
     }
-    // caanot be null or empty.must be atleast 3 characters
+    // cannot be null and cannot be empty and min and max length
     // not more than 15 characters
     public final void setFirstName(String firstName)throws IllegalArgumentException  {
             if(firstName == null || firstName.isEmpty() ||
@@ -67,7 +67,7 @@ public class Employee {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
+    public final String getLastName() {
         return lastName;
     }
     //cannot be null or empty.must be atleast 3 characters
@@ -85,7 +85,7 @@ public class Employee {
         return ssn;
     }
 
-    public void setSsn(String ssn) {
+    public final void setSsn(String ssn) {
         // needs validation
         this.ssn = ssn;
     }
